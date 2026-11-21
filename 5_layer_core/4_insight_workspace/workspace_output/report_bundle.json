@@ -1,0 +1,275 @@
+{
+  "report_id": "RPT_20261120_182655",
+  "status": "draft",
+  "snapshot_id": "SNAP_20261120_181045",
+  "created_at": "2026-11-20T18:26:55",
+  "policy_version": "policy-v1.0.0",
+  "allowed_channels_scope": [
+    "ALL"
+  ],
+  "units": {
+    "item_count": 36108,
+    "known_case_count": 10206,
+    "known_customer_count": 61,
+    "unknown_event_time_items": 5,
+    "needs_review_items": 21980,
+    "priority_flagged_items": 305,
+    "reviewed_items": 0,
+    "reviewed_coverage_pct": 0.0
+  },
+  "survey_nps": {
+    "available": true,
+    "valid_responses": 11127,
+    "promoters": 5186,
+    "passives": 1852,
+    "detractors": 4089,
+    "nps_score": 9.86
+  },
+  "claims": [
+    {
+      "claim_id": "CLAIM_001",
+      "claim_type": "observed_fact_and_customer_allegation",
+      "statement": "Chủ đề 'Chất lượng & Vận hành thiết bị' ghi nhận 17281 mục (47.86% tổng mục hợp lệ, 5542 vụ việc). Phân bố cảm xúc: {'neutral': 5938, 'positive': 6382, 'negative': 3301, 'mixed': 1660}.",
+      "evidence_links": [
+        {
+          "record_id": "REC_CORR_00074",
+          "case_id": "CASE_CORR_00025",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "product_quality",
+          "sentiment": "negative",
+          "evidence_span": "ng tiết học bù đó đã ảnh hưởng đến những đồ án , và trễ deadli",
+          "priority_flag": false
+        },
+        {
+          "record_id": "REC_CORR_00078",
+          "case_id": "CASE_CORR_00026",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "product_quality",
+          "sentiment": "negative",
+          "evidence_span": "gờ môn này lại chán đến như vậy , không học được gì từ môn này",
+          "priority_flag": false
+        },
+        {
+          "record_id": "REC_CORR_00024",
+          "case_id": "CASE_CORR_00008",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "product_quality",
+          "sentiment": "positive",
+          "evidence_span": "giảng dạy nhiệt tình , hướng dẫn chi tiết đến lúc sinh viên ",
+          "priority_flag": false
+        }
+      ]
+    },
+    {
+      "claim_id": "CLAIM_002",
+      "claim_type": "observed_fact_and_customer_allegation",
+      "statement": "Chủ đề 'Báo giá & Thanh toán' ghi nhận 8579 mục (23.76% tổng mục hợp lệ, 1867 vụ việc). Phân bố cảm xúc: {'positive': 3060, 'negative': 903, 'neutral': 4321, 'mixed': 295}.",
+      "evidence_links": [
+        {
+          "record_id": "REC_CORR_00027",
+          "case_id": "CASE_CORR_00009",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "pricing_quotation",
+          "sentiment": "negative",
+          "evidence_span": "lại nhiều lần sẽ tạo cảm giác chán cho sinh viên .",
+          "priority_flag": false
+        },
+        {
+          "record_id": "REC_CORR_00503",
+          "case_id": "CASE_CORR_00168",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "pricing_quotation",
+          "sentiment": "negative",
+          "evidence_span": "m bằng cách chủ yếu đánh giá cao phần thực hành , viết code , l",
+          "priority_flag": false
+        },
+        {
+          "record_id": "REC_CORR_00001",
+          "case_id": "CASE_CORR_00001",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "pricing_quotation",
+          "sentiment": "positive",
+          "evidence_span": "slide giáo trình đầy đủ .",
+          "priority_flag": false
+        }
+      ]
+    },
+    {
+      "claim_id": "CLAIM_003",
+      "claim_type": "observed_fact_and_customer_allegation",
+      "statement": "Chủ đề 'Thái độ & Quy trình CSKH' ghi nhận 5843 mục (16.18% tổng mục hợp lệ, 3058 vụ việc). Phân bố cảm xúc: {'positive': 4016, 'negative': 635, 'neutral': 936, 'mixed': 256}.",
+      "evidence_links": [
+        {
+          "record_id": "REC_CORR_00078",
+          "case_id": "CASE_CORR_00026",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "customer_service",
+          "sentiment": "negative",
+          "evidence_span": " từ 30 - 45 phút , không nhiệt tình .",
+          "priority_flag": false
+        },
+        {
+          "record_id": "REC_CORR_00483",
+          "case_id": "CASE_CORR_00161",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "customer_service",
+          "sentiment": "negative",
+          "evidence_span": " chưa tạo được không khí vui vẻ trong lớp học .",
+          "priority_flag": false
+        },
+        {
+          "record_id": "REC_CORR_00002",
+          "case_id": "CASE_CORR_00001",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "customer_service",
+          "sentiment": "positive",
+          "evidence_span": "nhiệt tình giảng dạy , gần gũi với sinh viên ",
+          "priority_flag": false
+        }
+      ]
+    },
+    {
+      "claim_id": "CLAIM_004",
+      "claim_type": "observed_fact_and_customer_allegation",
+      "statement": "Chủ đề 'Hỗ trợ kỹ thuật & Bảo hành' ghi nhận 3383 mục (9.37% tổng mục hợp lệ, 2058 vụ việc). Phân bố cảm xúc: {'neutral': 2308, 'positive': 486, 'negative': 462, 'mixed': 127}.",
+      "evidence_links": [
+        {
+          "record_id": "REC_CORR_00458",
+          "case_id": "CASE_CORR_00153",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "technical_support",
+          "sentiment": "negative",
+          "evidence_span": "nhiều kit de2 bị lỗi cần sửa chữa hoặc thay mới .",
+          "priority_flag": false
+        },
+        {
+          "record_id": "REC_CORR_00551",
+          "case_id": "CASE_CORR_00184",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "technical_support",
+          "sentiment": "negative",
+          "evidence_span": " Bộ phận CSKH SongNhat,\n\ncập nhật điểm thi giữa kỳ chậm , nên sinh v",
+          "priority_flag": false
+        },
+        {
+          "record_id": "REC_CORR_00209",
+          "case_id": "CASE_CORR_00070",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "technical_support",
+          "sentiment": "positive",
+          "evidence_span": "CSKH SongNhat,\n\nmáy tính cập nhật nhanh hơn .\n\nTrân trọng,\n[REDACTED",
+          "priority_flag": false
+        }
+      ]
+    },
+    {
+      "claim_id": "CLAIM_005",
+      "claim_type": "observed_fact_and_customer_allegation",
+      "statement": "Chủ đề 'Tiến độ giao hàng & Cung ứng' ghi nhận 1189 mục (3.29% tổng mục hợp lệ, 521 vụ việc). Phân bố cảm xúc: {'negative': 659, 'neutral': 211, 'mixed': 214, 'positive': 105}.",
+      "evidence_links": [
+        {
+          "record_id": "REC_CORR_00074",
+          "case_id": "CASE_CORR_00025",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "delivery_leadtime",
+          "sentiment": "negative",
+          "evidence_span": "ởng đến những đồ án , và trễ deadline .\n\nTrân trọng,\n[REDACTED_",
+          "priority_flag": false
+        },
+        {
+          "record_id": "REC_CORR_00260",
+          "case_id": "CASE_CORR_00087",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "delivery_leadtime",
+          "sentiment": "negative",
+          "evidence_span": " CSKH SongNhat,\n\nthầy đi trễ .\n\nTrân trọng,\n[REDACTED_NAME]\nSĐT",
+          "priority_flag": false
+        },
+        {
+          "record_id": "REC_CORR_02554",
+          "case_id": "CASE_CORR_00852",
+          "channel": "email",
+          "author_role": "customer",
+          "attribution_type": "customer_report",
+          "theme_id": "delivery_leadtime",
+          "sentiment": "positive",
+          "evidence_span": " , giờ học đúng không đi trễ về sớm .",
+          "priority_flag": false
+        }
+      ]
+    }
+  ],
+  "priority_watchlist_samples": [
+    {
+      "record_id": "REC_CORR_01477",
+      "case_id": "CASE_CORR_00493",
+      "channel": "email",
+      "attribution_type": "customer_report",
+      "evidence_span": "H SongNhat,\n\ngiảng viên thường xuyên đi trễ , việc giảng dạnh "
+    },
+    {
+      "record_id": "REC_CORR_02985",
+      "case_id": "CASE_CORR_00995",
+      "channel": "email",
+      "attribution_type": "customer_report",
+      "evidence_span": "giảng viên quá nhiệt tình ."
+    },
+    {
+      "record_id": "REC_CORR_03224",
+      "case_id": "CASE_CORR_01075",
+      "channel": "email",
+      "attribution_type": "customer_report",
+      "evidence_span": "tình , hiểu sinh viên , thương sinh viên ."
+    },
+    {
+      "record_id": "REC_CORR_05414",
+      "case_id": "CASE_CORR_01805",
+      "channel": "email",
+      "attribution_type": "customer_report",
+      "evidence_span": " quá nhiệt tình nên lớp thường hay ra muộn ."
+    },
+    {
+      "record_id": "REC_CORR_07538",
+      "case_id": "CASE_CORR_02513",
+      "channel": "email",
+      "attribution_type": "customer_report",
+      "evidence_span": "thầy quá nhiệt tình , nội dung giảng dạy mới lạ ."
+    }
+  ],
+  "hypotheses": [
+    {
+      "hypothesis_id": "HYP_001",
+      "label": "HYPOTHESIS (Cần kiểm chứng vận hành)",
+      "statement": "Tỷ lệ phản ánh tiêu cực ở nhóm chất lượng thiết bị và hỗ trợ kỹ thuật có thể liên quan đến quy trình kiểm tra sau bảo trì; cần đối soát hồ sơ kỹ thuật nội bộ."
+    }
+  ],
+  "llm_narrative_summary": "Tóm tắt: Có 36.108 bài viết, top themes là \"Chất lượng & Vận hành thiết bị\" với 17.281 bài, \"Báo giá & Thanh toán\" với 8.579 bài, \"Thái độ & Quy trình CSKH\" với 5.843 bài. NPS là 9.86."
+}

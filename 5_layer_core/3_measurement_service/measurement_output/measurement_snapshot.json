@@ -1,0 +1,172 @@
+{
+  "snapshot_id": "SNAP_20261120_181045",
+  "created_at": "2026-11-20T18:10:45",
+  "status": "ACTIVE",
+  "units": {
+    "item_count": 36108,
+    "known_case_count": 10206,
+    "known_customer_count": 61,
+    "unknown_event_time_items": 5,
+    "needs_review_items": 21980,
+    "priority_flagged_items": 305,
+    "reviewed_items": 0,
+    "reviewed_coverage_pct": 0.0
+  },
+  "channel_counts": {
+    "email": 16185,
+    "ticket": 2932,
+    "service_sheet": 2861,
+    "portal": 2998,
+    "survey": 11132
+  },
+  "monthly_item_trend_excluding_unknown": {
+    "2026-11": 9099,
+    "2026-12": 8909,
+    "2027-01": 6198,
+    "2027-02": 4704,
+    "2027-03": 5208,
+    "2027-04": 1985
+  },
+  "survey_nps": {
+    "available": true,
+    "valid_responses": 11127,
+    "promoters": 5186,
+    "passives": 1852,
+    "detractors": 4089,
+    "nps_score": 9.86
+  },
+  "theme_metrics": [
+    {
+      "theme_id": "product_quality",
+      "theme_label": "Chất lượng & Vận hành thiết bị",
+      "item_count": 17281,
+      "case_count": 5542,
+      "item_share_pct": 47.86,
+      "sentiment_breakdown": {
+        "neutral": 5938,
+        "positive": 6382,
+        "negative": 3301,
+        "mixed": 1660
+      }
+    },
+    {
+      "theme_id": "pricing_quotation",
+      "theme_label": "Báo giá & Thanh toán",
+      "item_count": 8579,
+      "case_count": 1867,
+      "item_share_pct": 23.76,
+      "sentiment_breakdown": {
+        "positive": 3060,
+        "negative": 903,
+        "neutral": 4321,
+        "mixed": 295
+      }
+    },
+    {
+      "theme_id": "customer_service",
+      "theme_label": "Thái độ & Quy trình CSKH",
+      "item_count": 5843,
+      "case_count": 3058,
+      "item_share_pct": 16.18,
+      "sentiment_breakdown": {
+        "positive": 4016,
+        "negative": 635,
+        "neutral": 936,
+        "mixed": 256
+      }
+    },
+    {
+      "theme_id": "technical_support",
+      "theme_label": "Hỗ trợ kỹ thuật & Bảo hành",
+      "item_count": 3383,
+      "case_count": 2058,
+      "item_share_pct": 9.37,
+      "sentiment_breakdown": {
+        "neutral": 2308,
+        "positive": 486,
+        "negative": 462,
+        "mixed": 127
+      }
+    },
+    {
+      "theme_id": "delivery_leadtime",
+      "theme_label": "Tiến độ giao hàng & Cung ứng",
+      "item_count": 1189,
+      "case_count": 521,
+      "item_share_pct": 3.29,
+      "sentiment_breakdown": {
+        "negative": 659,
+        "neutral": 211,
+        "mixed": 214,
+        "positive": 105
+      }
+    },
+    {
+      "theme_id": "safety_incident",
+      "theme_label": "An toàn & Sự cố nghiêm trọng",
+      "item_count": 298,
+      "case_count": 16,
+      "item_share_pct": 0.83,
+      "sentiment_breakdown": {
+        "mixed": 136,
+        "neutral": 2,
+        "negative": 87,
+        "positive": 73
+      }
+    }
+  ],
+  "intake_coverage_ref": {
+    "batch_id": "BATCH_20261120_01",
+    "source_version": "v1.0.0-hf-adapter",
+    "load_mode": "snapshot",
+    "cutoff_time": "2026-11-20T10:24:42",
+    "extraction_time": "2026-11-20T10:24:42",
+    "import_time": "2026-11-20T17:37:11",
+    "is_stale": false,
+    "missing_feeds": [],
+    "survey_coverage_available": true,
+    "deletion_tombstones_processed": 5,
+    "invalidation_events_emitted": 5,
+    "reconciliation": [
+      {
+        "source_file": "service_case_feedback.csv",
+        "rows_expected": 9869,
+        "rows_received": 9869,
+        "rows_accepted": 8791,
+        "rows_quarantined": 1078,
+        "rows_unanalyzed": 10,
+        "unknown_event_time_count": 0,
+        "unknown_customer_count": 5,
+        "stale_count": 0,
+        "priority_flagged_count": 8,
+        "status": "VERIFIED"
+      },
+      {
+        "source_file": "curated_correspondence.csv",
+        "rows_expected": 16185,
+        "rows_received": 16185,
+        "rows_accepted": 16185,
+        "rows_quarantined": 0,
+        "rows_unanalyzed": 0,
+        "unknown_event_time_count": 0,
+        "unknown_customer_count": 0,
+        "stale_count": 0,
+        "priority_flagged_count": 11,
+        "status": "VERIFIED"
+      },
+      {
+        "source_file": "survey_responses.csv",
+        "rows_expected": 11132,
+        "rows_received": 11132,
+        "rows_accepted": 11132,
+        "rows_quarantined": 0,
+        "rows_unanalyzed": 0,
+        "unknown_event_time_count": 5,
+        "unknown_customer_count": 0,
+        "stale_count": 0,
+        "priority_flagged_count": 27,
+        "status": "VERIFIED"
+      }
+    ]
+  }
+}

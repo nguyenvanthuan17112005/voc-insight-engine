@@ -1,0 +1,37 @@
+flowchart TB
+    classDef input fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#0D47A1
+    classDef gov fill:#ECEFF1,stroke:#37474F,stroke-width:2px,color:#263238
+    classDef state fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#1B5E20
+    classDef warn fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#B71C1C
+
+    subgraph IN["01 - DAU VAO TU TANG 2 & TANG 4"]
+        direction LR
+        IN1["review_candidates.csv<br/>(needs_review & priority_flag)"]:::input
+        IN2["report_bundle.json<br/>(status = draft)"]:::input
+        IN3["invalidation_events.jsonl<br/>(DAT 08: thay doi nguon)"]:::warn
+    end
+
+    subgraph GOV["02 - TANG 5: HUMAN REVIEW & ACTION GOVERNANCE"]
+        direction TB
+        G1["1. Label Correction Log (INS 08)<br/>Nhan vien sua theme / sentiment kem ly do<br/>Khong tu dong nap vao tap train / rule san xuat"]:::gov
+        G2["2. Report Approval Lifecycle (INS 05)<br/>draft -> under_review -> approved / rejected / superseded<br/>Gan ten nguoi duyet (named_owner) & phien ban"]:::state
+        G3["3. Dependency Invalidation (DAT 08, INS 05)<br/>Co sua nhan hoac xoa nguon -> chuyen bao cao<br/>sang superseded, cam viet de am tham"]:::warn
+        G4["4. Internal Action Register (INS 06, INS 07)<br/>proposed -> accepted / deferred / rejected -> implemented -> outcome_reviewed<br/>Chi ghi nhan noi bo, khong gui KH / tao CRM task"]:::gov
+
+        G1 --> G2 --> G3 --> G4
+    end
+
+    subgraph OUT["03 - HO SO QUAN TRI & XUAT NOI BO"]
+        direction LR
+        OUT1["reviewer_corrections.jsonl"]:::gov
+        OUT2["report_registry.json"]:::state
+        OUT3["action_register.json"]:::gov
+    end
+
+    IN1 --> G1
+    IN2 --> G2
+    IN3 --> G3
+
+    G1 --> OUT1
+    G3 --> OUT2
+    G4 --> OUT3

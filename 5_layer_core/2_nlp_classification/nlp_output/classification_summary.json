@@ -1,0 +1,21 @@
+{
+  "taxonomy_version": "tax-v1.0.0",
+  "model_version": "lexicon-baseline-tax-v1.0.0",
+  "total_records_classified": 36108,
+  "needs_review_count": 21980,
+  "priority_flagged_count": 305,
+  "theme_counts": {
+    "pricing_quotation": 8579,
+    "customer_service": 5843,
+    "product_quality": 17281,
+    "technical_support": 3383,
+    "delivery_leadtime": 1189,
+    "safety_incident": 298
+  },
+  "sentiment_counts": {
+    "positive": 14122,
+    "neutral": 13716,
+    "negative": 6047,
+    "mixed": 2688
+  }
+}

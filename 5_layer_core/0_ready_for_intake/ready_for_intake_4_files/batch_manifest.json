@@ -1,0 +1,25 @@
+{
+  "batch_id": "BATCH_20261120_01",
+  "source_version": "v1.0.0-hf-adapter",
+  "load_mode": "snapshot",
+  "cutoff_time": "2026-11-21T15:07:28",
+  "extraction_time": "2026-11-21T15:07:28",
+  "expected_rows": {
+    "service_case_feedback.csv": 9869,
+    "curated_correspondence.csv": 16185,
+    "survey_responses.csv": 11132,
+    "total": 37186
+  },
+  "deletion_tombstones": [
+    "REC_SC_00006",
+    "REC_SC_00007",
+    "REC_SC_00008",
+    "REC_SC_00009",
+    "REC_SC_00010"
+  ],
+  "files": [
+    "service_case_feedback.csv",
+    "curated_correspondence.csv",
+    "survey_responses.csv"
+  ]
+}

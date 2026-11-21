@@ -1,0 +1,32 @@
+flowchart TB
+    classDef input fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#0D47A1
+    classDef core fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#1B5E20
+    classDef llm fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#BF360C
+    classDef out fill:#ECEFF1,stroke:#455A64,stroke-width:2px,color:#263238
+
+    subgraph IN["01 - DAU VAO TU TANG 2 & TANG 3"]
+        direction LR
+        IN1["measurement_snapshot.json<br/>(So lieu xac dinh)"]:::input
+        IN2["classifications.jsonl<br/>(Evidence spans & attribution)"]:::input
+    end
+
+    subgraph CORE["02 - TANG 4: INSIGHT WORKSPACE"]
+        direction TB
+        W1["1. Permission-Filtered Search (INS 02, Sec 5)<br/>Loc theo channel / product_id / role_scope<br/>Khong de lo ban ghi ngoai pham vi quyen"]:::core
+        W2["2. Balanced Evidence Sampling (INS 03)<br/>Chon vi du dai dien gom ca y kien trai chieu<br/>va nhom thieu so; uu tien ban ghi priority"]:::core
+        W3["3. Claim Grounding & Narrative (INS 01, INS 02, INS 04)<br/>Gan claim_id -> record_id + evidence_span<br/>Tach Su that / Phan anh KH / Gia thuyet"]:::core
+        W4["4. Optional Local LLM Draft (Ollama 3B-7B Q4)<br/>Dien giai van ban dua tren so lieu da chot<br/>Cam tu bia so lieu hoac trich dan"]:::llm
+
+        W1 --> W2 --> W3 --> W4
+    end
+
+    subgraph OUT["03 - DAU RA CHO TANG 5"]
+        direction LR
+        OUT1["draft_report.md<br/>Bao cao nhap co trich dan"]:::out
+        OUT2["report_bundle.json<br/>(report_id, status=draft,<br/>claims, evidence_links)"]:::out
+    end
+
+    IN1 --> W1
+    IN2 --> W1
+    W4 --> OUT1
+    W4 --> OUT2

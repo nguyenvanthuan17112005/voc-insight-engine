@@ -1,0 +1,53 @@
+---
+config:
+  theme: redux-dark-color
+  layout: dagre
+---
+flowchart TB
+    classDef input fill:#1E3A5F,stroke:#64B5F6,stroke-width:2px,color:#E3F2FD
+    classDef core fill:#1B4332,stroke:#81C784,stroke-width:1.5px,color:#E8F5E9
+    classDef store fill:#263238,stroke:#90A4AE,stroke-width:1.5px,color:#ECEFF1
+    classDef queue fill:#4A151B,stroke:#E57373,stroke-width:1.5px,color:#FFEBEE
+    classDef next fill:#4A2511,stroke:#FFB74D,stroke-width:2px,color:#FFF3E0
+
+    subgraph IN ["01 - AUTHORIZED EXPORTS & MANIFEST (Đầu vào từ Layer 0)<br/>&nbsp;"]
+        direction TB
+        IN1["<b>1. service_case_feedback.csv</b><br/>Sự cố & dịch vụ kỹ thuật"]:::input
+        IN2["<b>2. curated_correspondence.csv</b><br/>Thư từ email B2B"]:::input
+        IN3["<b>3. survey_responses.csv</b><br/>Khảo sát NPS / CSAT (0–10)"]:::input
+        IN4["<b>4. batch_manifest.json</b><br/><i>expected_rows, source_version</i><br/><i>load_mode: snapshot / increment</i><br/><i>cutoff_time, extraction_time, deletion_tombstones</i>"]:::input
+    end
+
+    subgraph CORE ["02 - LAYER 1: CONTROLLED INTAKE ENGINE (controlled_intake_engine.py)<br/>&nbsp;"]
+        direction TB
+        S1["<b>1. Schema & Manifest Validation</b><br/>Kiểm tra 3 schema, kiểu dữ liệu, ISO 8601 (<i>unknown_event_time</i>)<br/>Xác thực manifest, <i>source_version</i> và <i>cutoff_time</i><br/><i>(DAT 01, DAT 02, B 01)</i>"]:::core
+        S2["<b>2. Batch Control & Idempotency</b><br/>Chống ghi đè bản mới hơn, lọc trùng retry SHA-256<br/>Xử lý <i>deletion_tombstones</i>, đối soát <i>expected / received</i><br/><i>(DAT 02, DAT 05)</i>"]:::core
+        S3["<b>3. Lineage & Entity Isolation</b><br/>Tách <i>customer / staff_note / unknown</i>; giữ nguyên <i>unknown</i><br/>Không auto-merge; tách <i>event_time, extraction_time, import_time</i><br/><i>(DAT 01, DAT 04, DAT 07)</i>"]:::core
+        S4["<b>4. Text Limits & History Rule</b><br/>Giới hạn tối đa 8.000 ký tự; không cắt xén âm thầm<br/>Đánh dấu <i>unanalyzed</i> & lọc trích dẫn email theo version<br/><i>(DAT 03)</i>"]:::core
+        S5["<b>5. PII Redaction & Priority Scan</b><br/>Tạo <i>redacted_text</i> (che SĐT, email, PII)<br/>Chạy deterministic priority keyword scan<br/><i>(SEC 03, B 01)</i>"]:::core
+        S6["<b>6. Correction & Invalidation Hook</b><br/>Phát hiện sửa nguồn, đổi quyền, xóa bản ghi<br/>Phát sự kiện vô hiệu hóa (invalidation) cho downstream<br/><i>(DAT 08)</i>"]:::core
+
+        S1 ==> S2 ==> S3 ==> S4 ==> S5 ==> S6
+    end
+
+    subgraph OUT ["03 - CONTROLLED OUTPUT & STORAGE (intake_output/)<br/>&nbsp;"]
+        direction TB
+        OUT1["<b>immutable_original_store/</b><br/>Lưu bản gốc <i>original_*.csv</i> (<i>original_text</i>)<br/>Bảo toàn dữ liệu nguyên bản"]:::store
+        OUT2["<b>normalized_store/ (Normalized Data)</b><br/><i>normalized_*.csv</i>: dữ liệu sạch + <i>redacted_text</i><br/><i>redaction_version + priority_flag</i>"]:::store
+        OUT3["<b>normalized_store/ (Ledger & Hooks)</b><br/><i>batch_manifest_ledger.csv, coverage_report.json</i><br/><i>intake_state.json, invalidation_events.jsonl</i>"]:::store
+        OUT4["<b>quarantine_queue/</b><br/><i>quarantine_*.csv</i>: lỗi schema / mã hóa<br/>Vượt 8.000 ký tự (<i>unanalyzed</i>) & nghi vấn trùng"]:::queue
+    end
+
+    L2(["<b>Layer 2: NLP & Classification Engine</b><br/>(Chỉ nhận <i>redacted_text</i> hợp lệ & lắng nghe invalidation)"]):::next
+
+    IN1 & IN2 & IN3 & IN4 ==> S1
+
+    S1 -.->|"Schema error / missing fields"| OUT4
+    S2 -.->|"Duplicate retry / suspected dup"| OUT4
+    S4 -.->|"Exceeds 8,000 chars / read error"| OUT4
+
+    S4 -->|"Preserve original_text"| OUT1
+    S6 ==>|"Normalized data + priority_scan"| OUT2
+    S6 -->|"Batch ledger & invalidation events"| OUT3
+    OUT2 ==> L2
+    OUT3 -.->|"invalidation_events.jsonl (DAT 08)"| L2

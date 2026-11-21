@@ -1,0 +1,4 @@
+batch_id,source_file,rows_expected,rows_received,rows_accepted,rows_quarantined,rows_unanalyzed,unknown_event_time_count,unknown_customer_count,priority_flagged_count,stale_count,status
+BATCH_20261120_01,service_case_feedback.csv,9869,9869,8791,1078,10,0,5,8,0,VERIFIED
+BATCH_20261120_01,curated_correspondence.csv,16185,16185,16185,0,0,0,0,11,0,VERIFIED
+BATCH_20261120_01,survey_responses.csv,11132,11132,11132,0,0,5,0,27,0,VERIFIED

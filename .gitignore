@@ -12,3 +12,8 @@ __pycache__/
 data/holdout/
 data/private/
 *.key
+
+Mermaid_SKILL
+
+# Jira draft/description notes
+jira_*

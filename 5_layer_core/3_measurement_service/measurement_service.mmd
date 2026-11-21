@@ -1,0 +1,39 @@
+flowchart TB
+    classDef input fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#0D47A1
+    classDef db fill:#FFF3E0,stroke:#E65100,stroke-width:2px,color:#BF360C
+    classDef calc fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#1B5E20
+    classDef inv fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#B71C1C
+
+    subgraph IN["01 - DAU VAO TU TANG 1 & TANG 2"]
+        direction LR
+        IN1["classifications.jsonl<br/>(Nhan draft / reviewed)"]:::input
+        IN2["coverage_report.json<br/>(So lieu unanalyzed / stale)"]:::input
+        IN3["invalidation_events.jsonl<br/>(DAT 08: xoa / sua nguon)"]:::inv
+    end
+
+    subgraph DB["02 - CO SO DU LIEU QUAN HE (SQLite)"]
+        direction LR
+        T1["items & labels<br/>(Tach draft vs reviewed)"]:::db
+        T2["case_cohorts<br/>(Ngay customer dau tien)"]:::db
+        T3["invalidation_log & snapshots<br/>(Danh dau SUPERSEDED)"]:::db
+    end
+
+    subgraph CALC["03 - TANG 3: DETERMINISTIC MEASUREMENT"]
+        direction TB
+        M1["1. Unit & Denominator Counting (DAT 06)<br/>Tach item_count / case_count / known_customer_count<br/>Da nhan > 100%, ghi ro mau so va needs_review"]:::calc
+        M2["2. Period Trends & Unknown Dates (DAT 07, ANL 06)<br/>Loai event_time = unknown khoi xu huong ky<br/>Kiem tra kha nang so sanh giua cac ky"]:::calc
+        M3["3. Survey NPS Formula (ANL 07, Annex C)<br/>NPS = 100*P(9..10) - 100*P(0..6)<br/>Giu 7-8 o mau so; khong suy dien tu sentiment"]:::calc
+        M4["4. Correction & Invalidation (DAT 08, B 06)<br/>Xu ly invalidation_events -> SUPERSEDED<br/>Bat buoc tinh lai khi nhan hieu chinh"]:::inv
+
+        M1 --> M2 --> M3 --> M4
+    end
+
+    OUT["measurement_snapshot.json<br/>(So lieu xac dinh cho Tang 4)"]:::calc
+
+    IN1 --> T1
+    IN2 --> M1
+    IN3 --> T3
+    T1 --> M1
+    T2 --> M1
+    T3 --> M4
+    M4 --> OUT

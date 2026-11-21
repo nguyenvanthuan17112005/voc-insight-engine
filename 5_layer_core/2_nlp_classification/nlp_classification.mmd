@@ -1,0 +1,49 @@
+---
+config:
+  theme: redux-dark-color
+  layout: dagre
+---
+flowchart TB
+    classDef input fill:#1E3A5F,stroke:#64B5F6,stroke-width:2px,color:#E3F2FD
+    classDef core fill:#1B4332,stroke:#81C784,stroke-width:1.5px,color:#E8F5E9
+    classDef store fill:#263238,stroke:#90A4AE,stroke-width:1.5px,color:#ECEFF1
+    classDef queue fill:#4A151B,stroke:#E57373,stroke-width:1.5px,color:#FFEBEE
+    classDef next fill:#4A2511,stroke:#FFB74D,stroke-width:2px,color:#FFF3E0
+
+    subgraph IN ["01 - NORMALIZED INPUTS & TAXONOMY (Đầu vào từ Layer 1)<br/>&nbsp;"]
+        direction TB
+        IN1["<b>1. normalized_service_case_feedback.csv</b><br/><i>redacted_text</i> sự cố & dịch vụ"]:::input
+        IN2["<b>2. normalized_curated_correspondence.csv</b><br/><i>redacted_text</i> email B2B"]:::input
+        IN3["<b>3. normalized_survey_responses.csv</b><br/><i>redacted_text</i> & <i>rating</i> (0–10)"]:::input
+        TAX["<b>4. taxonomy_v1.json</b><br/><i>tax-v1.0.0</i> (6 themes chuẩn hóa)"]:::input
+    end
+
+    subgraph CORE ["02 - LAYER 2: NLP & CLASSIFICATION ENGINE (nlp_classification_engine.py)<br/>&nbsp;"]
+        direction TB
+        N1["<b>1. Text Normalization & Role Guard</b><br/>Chuẩn hóa Unicode NFC trên <i>redacted_text</i><br/>Tách biệt <i>customer</i> vs <i>staff_note / unknown</i><br/><i>(DAT 01, ANL 03)</i>"]:::core
+        N2["<b>2. Pluggable Classifier</b><br/><i>BaseClassifier</i>: mặc định CPU <i>DeterministicLexiconClassifier</i><br/>Tùy chọn GPU 6GB: <i>PhoBERTClassifier</i> (FP16)<br/><i>(ANL 01, ANL 02)</i>"]:::core
+        N3["<b>3. Aspect Sentiment & Negation</b><br/>4 nhãn: <i>positive / negative / mixed / neutral</i><br/>Xử lý phủ định (<i>không, chưa, chẳng, đâu có</i>) & thuật ngữ kỹ thuật<br/><i>(ANL 03)</i>"]:::core
+        N4["<b>4. Evidence Span & Abstention</b><br/>Trích xuất <i>[start:end]</i> & đoạn trích chính xác; không ép nhãn<br/><i>no_supported_theme</i> hoặc <i>>5</i> chủ đề -> <i>needs_review = True</i><br/><i>(ANL 02)</i>"]:::core
+        N5["<b>5. Priority Escalation & Attribution</b><br/>Giữ <i>label_stage = draft</i>, <i>attribution_type</i> (<i>customer_report / staff_observation</i>)<br/>Bảo toàn <i>priority_flag</i> Layer 1 & leo thang <i>safety_incident</i><br/><i>(ANL 04, ANL 05, B 02)</i>"]:::core
+
+        N1 ==> N2 ==> N3 ==> N4 ==> N5
+    end
+
+    subgraph OUT ["03 - CLASSIFICATION OUTPUTS & REVIEW QUEUE (nlp_output/)<br/>&nbsp;"]
+        direction TB
+        OUT1["<b>classifications.jsonl</b><br/><i>label_stage: draft</i>, <i>aspect_sentiment</i><br/><i>evidence_span, taxonomy_version</i>"]:::store
+        OUT2["<b>review_candidates.csv</b><br/>Bản ghi <i>needs_review</i> hoặc <i>priority_flag</i><br/>Hàng đợi kiểm duyệt thủ công <i>(AT 01–AT 03)</i>"]:::queue
+        OUT3["<b>classification_summary.json</b><br/>Thống kê phân bổ 6 themes, sentiment & độ phủ"]:::store
+    end
+
+    L3(["<b>Layer 3: Aggregation, Trend & Reporting</b><br/>(Tổng hợp chỉ số & cảnh báo có kiểm soát)"]):::next
+
+    IN1 & IN2 & IN3 ==> N1
+    TAX -->|"tax-v1.0.0 (6 themes)"| N2
+
+    N4 -.->|"needs_review (no theme / >5 themes)"| OUT2
+    N5 -.->|"priority_flag / safety_incident"| OUT2
+
+    N5 ==>|"Draft labels + evidence_span"| OUT1
+    N5 -->|"Theme & sentiment stats"| OUT3
+    OUT1 & OUT3 ==> L3

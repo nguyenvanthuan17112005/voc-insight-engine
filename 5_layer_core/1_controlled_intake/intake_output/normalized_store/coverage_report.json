@@ -1,0 +1,54 @@
+{
+  "batch_id": "BATCH_20261120_01",
+  "source_version": "v1.0.0-hf-adapter",
+  "load_mode": "snapshot",
+  "cutoff_time": "2026-11-20T10:24:42",
+  "extraction_time": "2026-11-20T10:24:42",
+  "import_time": "2026-11-20T17:37:11",
+  "is_stale": false,
+  "missing_feeds": [],
+  "survey_coverage_available": true,
+  "deletion_tombstones_processed": 5,
+  "invalidation_events_emitted": 5,
+  "reconciliation": [
+    {
+      "source_file": "service_case_feedback.csv",
+      "rows_expected": 9869,
+      "rows_received": 9869,
+      "rows_accepted": 8791,
+      "rows_quarantined": 1078,
+      "rows_unanalyzed": 10,
+      "unknown_event_time_count": 0,
+      "unknown_customer_count": 5,
+      "stale_count": 0,
+      "priority_flagged_count": 8,
+      "status": "VERIFIED"
+    },
+    {
+      "source_file": "curated_correspondence.csv",
+      "rows_expected": 16185,
+      "rows_received": 16185,
+      "rows_accepted": 16185,
+      "rows_quarantined": 0,
+      "rows_unanalyzed": 0,
+      "unknown_event_time_count": 0,
+      "unknown_customer_count": 0,
+      "stale_count": 0,
+      "priority_flagged_count": 11,
+      "status": "VERIFIED"
+    },
+    {
+      "source_file": "survey_responses.csv",
+      "rows_expected": 11132,
+      "rows_received": 11132,
+      "rows_accepted": 11132,
+      "rows_quarantined": 0,
+      "rows_unanalyzed": 0,
+      "unknown_event_time_count": 5,
+      "unknown_customer_count": 0,
+      "stale_count": 0,
+      "priority_flagged_count": 27,
+      "status": "VERIFIED"
+    }
+  ]
+}

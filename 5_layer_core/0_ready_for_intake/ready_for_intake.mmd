@@ -1,0 +1,72 @@
+---
+config:
+  theme: redux-dark-color
+  layout: dagre
+---
+flowchart TB
+    classDef input fill:#1E3A5F,stroke:#64B5F6,stroke-width:2px,color:#E3F2FD
+    classDef process fill:#1B4332,stroke:#81C784,stroke-width:1.5px,color:#E8F5E9
+    classDef store fill:#263238,stroke:#90A4AE,stroke-width:1.5px,color:#ECEFF1
+    classDef next fill:#4A2511,stroke:#FFB74D,stroke-width:2px,color:#FFF3E0
+
+    subgraph SRC ["01 - ACADEMIC DATA SOURCES (Hugging Face)"]
+        direction LR
+        HF1["<b>CSConDa</b><br/>ura-hcmut/Vietnamese-Customer-Support-QA"]:::input
+        HF2["<b>UIT-VSFC</b><br/>uitnlp/vietnamese_students_feedback"]:::input
+        HF3["<b>UIT-ViSFD</b><br/>SEACrowd/uit_visfd"]:::input
+    end
+
+    subgraph PREP ["02 - LAYER 0 → 1: DATA ADAPTER & BATCH SIMULATOR"]
+        direction TB
+        
+        subgraph STEP1 ["Step 1: Text Extraction & Cleaning<br/>&nbsp;"]
+            direction LR
+            P1_1["<b>CSConDa</b><br/>Lấy lượt hỏi/đáp → <i>text</i><br/>(UTF-8, giữ nguyên bản - VN 01, Annex C)"]:::process
+            P1_2["<b>UIT-VSFC</b><br/>Lấy câu nhận xét → <i>text</i><br/>(Không cắt xén - DAT 03)"]:::process
+            P1_3["<b>UIT-ViSFD</b><br/>Bóc tách comment & n_star → <i>text, rating</i><br/>(Thang 0–10 chuẩn NPS - Annex C R06)"]:::process
+        end
+
+        subgraph STEP2 ["Step 2: Metadata Normalization & B2B Simulation<br/>(Annex C)"]
+            direction LR
+            P2_1["<b>Sinh định danh (IDs)</b><br/>record_id, case_id, customer_id, product_id<br/>(Giữ unknown, không gộp - DAT 04, Annex C)"]:::process
+            P2_2["<b>Gán ngữ cảnh</b><br/>channel, event_time (ISO 8601), author_role<br/>(Tách mốc thời gian - DAT 01, DAT 07)"]:::process
+            P2_3["<b>Bọc vỏ Email B2B (25%)</b><br/>Chào hỏi, chữ ký PII, Re:/Fwd:, Original Msg<br/>(Kiểm thử che PII & trích dẫn - SEC 03, DAT 03)"]:::process
+        end
+
+        subgraph STEP3 ["Step 3: Batching & Edge-case Injection<br/>&nbsp;"]
+            direction LR
+            P3_1["<b>Chia lô (Batching)</b><br/>load_mode: snapshot / increment<br/>(Đối soát & lũy đẳng - DAT 02, DAT 05)"]:::process
+            P3_2["<b>40 kịch bản VN 02 (4 nhóm x 10)</b><br/>quoted history, forwarding/unknown,<br/>survey/period, priority/deletion (DAT 08)"]:::process
+        end
+
+        subgraph STEP4 ["Step 4: Data Contract Packaging<br/>(Annex C)"]
+            direction LR
+            P4_1["<b>Đóng gói 3 tệp CSV</b><br/>Identity & time, Text evidence,<br/>Survey 0–10 chuẩn Phụ lục C (B 01)"]:::process
+            P4_2["<b>Tạo Batch Manifest</b><br/>expected_rows, source_version,<br/>cutoff_time, extraction_time (DAT 02, DAT 07)"]:::process
+        end
+
+        P1_1 --> P2_1
+        P1_2 --> P2_2
+        P1_3 --> P2_3
+        P2_1 & P2_2 ==> P3_1
+        P2_3 ==> P3_2
+        P3_1 ==> P4_1
+        P3_2 ==> P4_2
+    end
+
+    subgraph READY ["03 - READY FOR CONTROLLED INTAKE<br/>(Layer 0 Outputs)"]
+        direction LR
+        OUT1["<b>1. service_case_feedback.csv</b><br/>Sự cố & dịch vụ kỹ thuật<br/>(DAT 01, DAT 04, Annex C)"]:::store
+        OUT2["<b>2. curated_correspondence.csv</b><br/>Thư từ email B2B<br/>(DAT 03, SEC 03, Annex C)"]:::store
+        OUT3["<b>3. survey_responses.csv</b><br/>Khảo sát NPS / CSAT<br/>(Annex C R06: thang 0–10)"]:::store
+        OUT4["<b>4. batch_manifest.json</b><br/>Metadata lô & deletion_tombstones<br/>(DAT 02, DAT 07, DAT 08)"]:::store
+    end
+
+    L1(["<b>Layer 1: Controlled Intake Engine</b>"]):::next
+
+    HF1 --> P1_1
+    HF2 --> P1_2
+    HF3 --> P1_3
+    P4_1 --> OUT1 & OUT2 & OUT3
+    P4_2 --> OUT4
+    OUT1 & OUT2 & OUT3 & OUT4 ==> L1

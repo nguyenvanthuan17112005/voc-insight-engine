@@ -1,0 +1,60 @@
+{
+  "taxonomy_version": "tax-v1.0.0",
+  "themes": [
+    {
+      "theme_id": "product_quality",
+      "label": "Chất lượng & Vận hành thiết bị",
+      "description": "Phản ánh về chất lượng phần cứng, pin, màn hình, loa, camera, độ mượt, tiếng ồn, rung lắc hoặc lỗi linh kiện.",
+      "keywords": [
+        "pin", "màn hình", "camera", "loa", "wifi", "sóng", "vân tay", "cảm ứng",
+        "giật", "lag", "đơ", "treo", "rung lắc", "tiếng ồn", "chất lượng", "bền",
+        "mượt", "xịn", "tốt", "kém", "tệ", "xấu", "hư", "hỏng", "lỗi"
+      ]
+    },
+    {
+      "theme_id": "delivery_leadtime",
+      "label": "Tiến độ giao hàng & Cung ứng",
+      "description": "Phản ánh về thời gian giao nhận, chậm tiến độ, thiếu linh kiện hoặc lịch bàn giao.",
+      "keywords": [
+        "giao hàng", "tiến độ", "chậm", "trễ", "đợi", "không có hàng", "thiếu hàng",
+        "bàn giao", "vận chuyển", "đợt"
+      ]
+    },
+    {
+      "theme_id": "pricing_quotation",
+      "label": "Báo giá & Thanh toán",
+      "description": "Trao đổi về giá cả, báo giá, hợp đồng, khuyến mãi, phiếu mua hàng, hoàn tiền.",
+      "keywords": [
+        "giá", "báo giá", "chào giá", "tầm giá", "tiền", "thanh toán", "trả góp",
+        "khuyến mãi", "phiếu mua hàng", "giảm", "gói", "mua"
+      ]
+    },
+    {
+      "theme_id": "customer_service",
+      "label": "Thái độ & Quy trình CSKH",
+      "description": "Nhận xét về thái độ nhân viên, tư vấn, tốc độ phản hồi, đổi trả và quy trình phục vụ.",
+      "keywords": [
+        "nhân viên", "tư vấn", "nhiệt tình", "chu đáo", "phục vụ", "thái độ",
+        "phản hồi", "đổi trả", "tổng đài", "lừa", "thất vọng", "vui vẻ"
+      ]
+    },
+    {
+      "theme_id": "technical_support",
+      "label": "Hỗ trợ kỹ thuật & Bảo hành",
+      "description": "Yêu cầu hỗ trợ kỹ thuật, bảo hành, sửa chữa, cài đặt phần mềm, tài khoản, kết nối SSL/mạng.",
+      "keywords": [
+        "bảo hành", "bảo trì", "kỹ thuật", "sửa", "cập nhật", "phần mềm",
+        "tài khoản", "hack", "kết nối", "cài đặt", "chứng chỉ", "hỗ trợ"
+      ]
+    },
+    {
+      "theme_id": "safety_incident",
+      "label": "An toàn & Sự cố nghiêm trọng",
+      "description": "Cảnh báo quá nhiệt, cháy nổ, mùi khét, chập điện, rò rỉ hoặc mất an toàn vận hành.",
+      "keywords": [
+        "quá nhiệt", "nóng máy", "nóng ran", "nóng như than", "cháy nổ",
+        "mùi khét", "bốc khói", "chập điện", "rò rỉ", "mất an toàn", "nguy hiểm"
+      ]
+    }
+  ]
+}
