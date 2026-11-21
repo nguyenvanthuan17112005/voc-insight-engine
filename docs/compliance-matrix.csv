@@ -1,0 +1,48 @@
+﻿req_id,summary,core_or_option,component,owner_role,design,test,status
+DAT 01,"Lineage: giữ khóa, phiên bản, thời gian, vai trò tác giả",Core,Intake,DE1,,,Sẽ làm
+DAT 02,"Batch: đối soát dòng, retry idempotent, tombstone",Core,Intake,DE1,,,Sẽ làm
+DAT 03,"Không cắt cụt âm thầm, hàng chờ review",Core,Intake,DE1,,,Sẽ làm
+DAT 04,"Khóa customer/case được cung cấp, không tự gộp",Core,Intake,DE1,,,Sẽ làm
+DAT 05,"Xử lý trùng lặp, tin chuyển tiếp, tái diễn",Core,Measurement,DE2,,,Sẽ làm
+DAT 06,"Đơn vị và mẫu số: item, case, customer",Core,Measurement,DE2,,,Sẽ làm
+DAT 07,"Ngày sự kiện/trích xuất/nhập, ngày không rõ",Core,Measurement,DE2,,,Sẽ làm
+DAT 08,Sửa nguồn làm vô hiệu số liệu liên quan,Core,Intake,DE1,,,Sẽ làm
+ANL 01,"Baseline: thủ công, từ khóa, bộ phân loại",Core,Analysis,NLP1,,,Sẽ làm
+ANL 02,"Theme kèm span, needs review",Core,Analysis,NLP1,,,Sẽ làm
+ANL 03,"Sentiment theo khía cạnh, 4 nhãn",Core,Analysis,NLP2,,,Sẽ làm
+ANL 04,Allegation: không kết luận lỗi/nguyên nhân,Core,Analysis,NLP2,,,Sẽ làm
+ANL 05,Cờ ưu tiên bằng luật,Core,Analysis,NLP1,,,Sẽ làm
+ANL 06,Xu hướng so cùng kỳ,Core,Measurement,DE2,,,Sẽ làm
+ANL 07,NPS/CSAT chỉ từ rating thật,Core,Measurement,DE2,,,Sẽ làm
+ANL 08,"Không suy churn, ý định mua, hiệu suất nhân viên",Core,Governance,PO,,,Sẽ làm
+INS 01,Cấu trúc báo cáo,Core,Workspace,NLP2,,,Sẽ làm
+INS 02,Mỗi nhận định trỏ về nguồn,Core,Workspace,NLP2,,,Sẽ làm
+INS 03,"Ví dụ đại diện, ẩn danh",Core,Workspace,NLP1,,,Sẽ làm
+INS 04,Số liệu do code tính,Core,Measurement,DE2,,,Sẽ làm
+INS 05,Trạng thái duyệt báo cáo,Core,Workspace,TL,,,Sẽ làm
+INS 06,Sổ đề xuất hành động,Core,Workspace,FE,,,Sẽ làm
+INS 07,Bằng chứng kết quả hành động,Core,Workspace,FE,,,Sẽ làm
+INS 08,Sửa nhãn có lý do,Core,Workspace,FE,,,Sẽ làm
+SEC 01,Phân quyền phía server,Core,Operations,TL,,,Sẽ làm
+SEC 02,Thu hồi quyền,Core,Operations,TL,,,Sẽ làm
+SEC 03,Ẩn thông tin cá nhân trước khi gọi LLM,Core,Operations,QA,,,Sẽ làm
+SEC 04,Ẩn nhóm dưới 5 khách,Core,Measurement,DE2,,,Sẽ làm
+SEC 05,"Cơ sở xử lý dữ liệu, luật VN",Core,Governance,PO,,,Sẽ làm
+SEC 06,Lưu trữ và xóa,Core,Operations,DE1,,,Sẽ làm
+SEC 07,"Kiểm soát kỹ thuật, prompt injection",Core,Operations,QA,,,Sẽ làm
+SEC 08,Xác nhận áp dụng AI/privacy/cyber,Core,Governance,PO,,,Sẽ làm
+AT 01,"Theme macro F1 >= 0.85, không theme < 0.75",Core,Evaluation,NLP1,,,Sẽ làm
+AT 02,Aspect sentiment macro F1 >= 0.80,Core,Evaluation,NLP2,,,Sẽ làm
+AT 03,60 ca an toàn đều sinh cờ,Core,Evaluation,QA,,,Sẽ làm
+AT 04,Test đếm tham chiếu,Core,Evaluation,QA,,,Sẽ làm
+AT 05,Grounding báo cáo >= 98%,Core,Evaluation,NLP2,,,Sẽ làm
+AT 06,"Bảo mật và vòng đời, 0 lộ dữ liệu",Core,Evaluation,QA,,,Sẽ làm
+AT 07,"Vận hành, không cắt cụt âm thầm",Core,Evaluation,QA,,,Sẽ làm
+AT 08,Giảm >= 25% thời gian xử lý,Core,Evaluation,QA,,,Sẽ làm
+DEL 01,Discovery,Core,Governance,PO,,,Sẽ làm
+DEL 02,Thiết kế,Core,Governance,TL,,,Sẽ làm
+DEL 03,"Core pilot (nhập, phân tích, dashboard, xuất PDF/CSV)",Core,Workspace,FE,,,Sẽ làm
+DEL 04,Đánh giá độc lập,Core,Evaluation,QA,,,Sẽ làm
+DEL 05,Bàn giao,Core,Operations,TL,,,Sẽ làm
+DEL 06,Thoát và xuất dữ liệu,Core,Operations,TL,,,Sẽ làm
+OPT,"Audio, connector trực tiếp, writeback",Option,-,-,,,Ngoài phạm vi

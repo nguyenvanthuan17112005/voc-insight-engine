@@ -1,0 +1,6 @@
+record_id,record_version,source_system,event_time,extraction_time,import_time,channel,author_role,customer_key,case_key,text,access_label,thread_id,audience,is_forwarded,quoted_history_flag
+M001,1,mail_demo,2026-10-03T08:00:00,2026-11-01T00:00:00,2026-11-01T01:00:00,email,customer,C006,CASE08,"Báo giá thiếu phần vận chuyển, mong anh chị bổ sung.",internal,T01,sales,false,false
+M002,1,mail_demo,2026-10-04T09:00:00,2026-11-01T00:00:00,2026-11-01T01:00:00,email,staff,C006,CASE08,"Đã chuyển yêu cầu cho bộ phận kinh doanh xử lý.",internal,T01,sales,true,false
+M003,1,mail_demo,2026-10-04T09:30:00,2026-11-01T00:00:00,2026-11-01T01:00:00,email,customer,C006,CASE08,"Báo giá thiếu phần vận chuyển, mong anh chị bổ sung.",internal,T01,sales,true,true
+M004,1,mail_demo,2026-10-18T13:00:00,2026-11-01T00:00:00,2026-11-01T01:00:00,email,customer,C007,CASE09,"Delivery lâu hơn dự kiến nhưng sp ok.",internal,T02,service,false,false
+M005,1,mail_demo,2026-10-25T10:10:00,2026-11-01T00:00:00,2026-11-01T01:00:00,email,customer,C007,CASE10,"Máy dừng sản xuất từ sáng nay, cần xử lý gấp.",restricted,T03,service,false,false

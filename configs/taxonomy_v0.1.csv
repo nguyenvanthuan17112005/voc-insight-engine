@@ -1,0 +1,7 @@
+theme_id,theme_name,mandatory,description,exclusions,example
+T01,response_time,yes,"Khen/phàn nàn tốc độ trả lời của bộ phận","Chất lượng sản phẩm","Gửi yêu cầu 3 ngày chưa ai trả lời"
+T02,quotation_clarity,yes,"Báo giá dễ hiểu, đủ hạng mục hay thiếu","Giá cao hay thấp","Báo giá thiếu phần vận chuyển"
+T03,delivery_communication,yes,"Cập nhật lịch giao, thông báo trễ hạn","Hư hỏng khi vận chuyển","Không ai báo hàng trễ"
+T04,product_documentation,no,"Hướng dẫn, catalogue, chứng nhận","",""
+T05,service_coordination,no,"Lịch kỹ thuật viên, hẹn lịch","",""
+T06,reported_product_concern,no,"Khách nêu sự cố thiết bị (chỉ ghi nhận, không chẩn đoán)","Kết luận nguyên nhân","Motor nóng bất thường"

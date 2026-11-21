@@ -1,0 +1,5 @@
+record_id,record_version,source_system,event_time,extraction_time,import_time,channel,author_role,customer_key,case_key,text,access_label,question_id,rating,rating_scale
+V001,1,survey_demo,2026-10-10T00:00:00,2026-11-01T00:00:00,2026-11-01T01:00:00,survey,customer,C008,,"Hài lòng với báo giá.",internal,NPS_Q1,9,0-10
+V002,1,survey_demo,2026-10-10T00:00:00,2026-11-01T00:00:00,2026-11-01T01:00:00,survey,customer,C009,,,internal,NPS_Q1,5,0-10
+V003,1,survey_demo,2026-10-11T00:00:00,2026-11-01T00:00:00,2026-11-01T01:00:00,survey,customer,C010,,"Hỗ trợ ổn.",internal,NPS_Q1,,0-10
+V004,1,survey_demo,2026-10-11T00:00:00,2026-11-01T00:00:00,2026-11-01T01:00:00,survey,customer,C011,,,internal,NPS_Q1,8,0-10

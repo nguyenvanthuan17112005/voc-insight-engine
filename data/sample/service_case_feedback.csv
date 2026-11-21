@@ -1,0 +1,10 @@
+record_id,record_version,source_system,event_time,extraction_time,import_time,channel,author_role,customer_key,case_key,text,access_label,product_id,site,case_status
+S001,1,helpdesk_demo,2026-10-02T09:15:00,2026-11-01T00:00:00,2026-11-01T01:00:00,ticket,customer,C001,CASE01,"Gửi yêu cầu hỗ trợ 3 ngày rồi chưa ai trả lời, trả lời chậm quá.",internal,MTR-100,Site A,open
+S002,1,helpdesk_demo,2026-10-05T14:00:00,2026-11-01T00:00:00,2026-11-01T01:00:00,ticket,customer,C002,CASE02,"Báo giá rõ ràng nhưng bên em trả lời hơi chậm.",internal,PMP-220,Site B,closed
+S003,1,helpdesk_demo,2026-10-07T08:30:00,2026-11-01T00:00:00,2026-11-01T01:00:00,ticket,customer,C003,CASE03,"Motor MTR-100 bị nóng bất thường, có mùi khét khi chạy.",restricted,MTR-100,Site C,open
+S004,1,helpdesk_demo,,2026-11-01T00:00:00,2026-11-01T01:00:00,ticket,customer,C001,CASE04,"giao hang tre qua, khong ai bao truoc",internal,PMP-220,Site A,open
+S005,1,helpdesk_demo,2026-10-12T10:00:00,2026-11-01T00:00:00,2026-11-01T01:00:00,ticket,staff,C004,CASE05,"Nhân viên ghi chú: khách đã được báo lịch giao mới.",internal,PMP-220,Site D,closed
+S006,1,helpdesk_demo,2026-10-15T11:20:00,2026-11-01T00:00:00,2026-11-01T01:00:00,ticket,unknown,,,"Không chậm lắm, nhưng tài liệu hướng dẫn còn thiếu.",internal,VLV-050,Site B,open
+S006,1,helpdesk_demo,2026-10-15T11:20:00,2026-11-01T00:00:00,2026-11-01T01:00:00,ticket,unknown,,,"Không chậm lắm, nhưng tài liệu hướng dẫn còn thiếu.",internal,VLV-050,Site B,open
+S007,1,helpdesk_demo,2026-10-20T16:45:00,2026-11-01T00:00:00,2026-11-01T01:00:00,ticket,customer,C005,CASE06,"Nhanh ghê, đúng 2 tuần mới có hàng.",internal,VLV-050,Site E,open
+S008,1,helpdesk_demo,2026-10-22T09:00:00,2026-11-01T00:00:00,2026-11-01T01:00:00,ticket,customer,C005,CASE07,,internal,VLV-050,Site E,open

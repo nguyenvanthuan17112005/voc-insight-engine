@@ -1,0 +1,11 @@
+# Lõi hiện tại chỉ dùng thư viện chuẩn. Thêm dần theo sprint:
+# pandas
+# fastapi
+# uvicorn
+# sqlalchemy
+# psycopg2-binary
+# scikit-learn
+# underthesea
+# transformers
+# torch
+# streamlit

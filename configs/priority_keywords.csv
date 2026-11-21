@@ -1,0 +1,13 @@
+rule_id,group,keyword
+P01,safety,cháy
+P02,safety,nổ
+P03,safety,chập điện
+P04,safety,giật điện
+P05,safety,quá nhiệt
+P06,safety,nóng bất thường
+P07,safety,mùi khét
+P08,safety,bốc khói
+P09,safety,thương tích
+P10,service_interruption,dừng sản xuất
+P11,service_interruption,ngừng máy
+P12,service_interruption,máy dừng
